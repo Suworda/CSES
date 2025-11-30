@@ -16,8 +16,8 @@ bool valid(long long x){
 }
 
 int main(){
-    // ios::sync_with_stdio(false);
-    // cin.tie(0);
+    ios::sync_with_stdio(false);
+    cin.tie(0);
     
     cin>>n>>t;
     for(int i=0; i<n; i++) cin>>k[i];
