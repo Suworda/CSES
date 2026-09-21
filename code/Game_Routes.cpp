@@ -9,18 +9,16 @@ const int M = 1e9+7;
 struct Graph{
     int n;
     vector<vector<int>> pre;
-    vector<bool> vis;
     vector<int> dp;
     
-    Graph(int n) : n(n), pre(n+1), vis(n+1), dp(n+1) {}
+    Graph(int n) : n(n), pre(n+1), dp(n+1) {}
 
     void add_edge(int a, int b){
         pre[b].push_back(a);
     }
 
     void dfs(int u){
-        if(vis[u]) return;
-        vis[u] = 1;
+        if(dp[u]) return;
 
         if(u == 1){
             dp[u] = 1;
