@@ -5,9 +5,9 @@ using namespace std;
 struct Graph{
     int n;
     vector<int> nxt;
-    vector<vector<int>> jp;
+    vector<array<int, 32>> jp;
 
-    Graph(int _n): n(_n), nxt(n+1), jp(n+1, vector<int>(31)) {};
+    Graph(int _n): n(_n), nxt(n+1), jp(n+1) {};
 
     void add_edge(int a, int b){
         nxt[a] = b;
