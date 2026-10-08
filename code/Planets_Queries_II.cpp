@@ -8,10 +8,9 @@ struct Graph{
     vector<int> nxt;
     vector<vector<int>> pre;
     vector<array<int,35>> jp;
-    vector<int> dep, roots, cycle_len; //1 -> cycle
-    vector<bool> in_cycle;
+    vector<int> dep, roots, cycle_len;
 
-    Graph(int _n) : n(_n), nxt(n+1), pre(n+1), jp(n+1), in_cycle(n+1), dep(n+1), cycle_len(n+1) {}
+    Graph(int _n) : n(_n), nxt(n+1), pre(n+1), jp(n+1), dep(n+1), cycle_len(n+1) {}
 
     void add_edge(int a, int b){
         nxt[a] = b;
@@ -44,7 +43,6 @@ struct Graph{
 
                 for(int x: vec){
                     instk[x] = 0;
-                    in_cycle[x] = 1;
                     cycle_len[x] = vec.size();
                 }
             }
@@ -93,15 +91,6 @@ struct Graph{
             }
             return x == b;
         };
-
-        if((in_cycle[a] == 1 && in_cycle[b] == 0)){
-            return -1;
-        }
-        else if(in_cycle[a] == 0 && in_cycle[b] == 0){
-            int dis = dep[a] - dep[b];
-            if(dis >= 0 && can_vis(a, b, dis)) return dis;
-            else return -1;
-        }
 
         int x = dep[a] - dep[b];
         if(x >= 0 && can_vis(a, b, x)) return x;
