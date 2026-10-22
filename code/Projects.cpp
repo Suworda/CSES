@@ -50,7 +50,7 @@ signed main(){
     int id = 0;
     for(int i=1; i<=n*2; i++){
         dp[i] = dp[i-1];
-        while(v[id].r == i){
+        while(id < 2*n+1 && v[id].r == i){
             auto [l, r, p] = v[id];
             dp[i] = max(dp[i], dp[l-1] + p);
             id++;
